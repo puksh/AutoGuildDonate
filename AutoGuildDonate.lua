@@ -18,8 +18,6 @@ local BlueText = "|cff0072bc"
 local PurpleText = "|cffc805f8"
 local EndColor = "|r"
 
-DEFAULT_CHAT_FRAME:AddMessage(string.format("%s%s%s %sv%s%s %s%s%s", BlueText, ADDON, EndColor, GreenText, VERSION, EndColor, WhiteText, CREATOR, EndColor))
-
 local AutoGuildDonateLoaded = true
 local AGDDelay = 1
 --[[

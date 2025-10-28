@@ -3,3 +3,4 @@
 ## Author: ZTrek
 
 AutoGuildDonate.xml
+AutoGuildDonate_Register.lua
