@@ -5,12 +5,13 @@ local Auto = TEXT("UI_LOTTERYSHOP_AUTO")
 local GuildContribution = TEXT("SYS_ITEMTYPE_26")
 local Guild = TEXT("GUILDWAR_LANDMARK_NAME_1")
 
-local ENLang = (string.sub(GetLanguage(),1,2) == "EN") and true or false
+local _lang = tostring(GetLanguage() or "")
+local ENLang = (string.sub(_lang,1,2):upper() == "EN") and true or false
 local ADDON = ENLang and "Auto Guild Donate" or Auto.." "..GuildContribution
 
 local VERSION = 5.0
 local Author = TEXT("GUILD_MSG_POST_AUTHOR")
-local CREATOR = Author..": ZTrek"
+local CREATOR = Author..": ZTrek - edited by puksh"
 
 local WhiteText = "|cffFFFFFF"
 local GreenText = "|cff00ff00"
@@ -25,10 +26,8 @@ local AGDDelay = 1
 local LeftClickOpenSettings = TEXT("CHANNEL_CHANGE_LEFT_MOUSE_OPEN")--Left-Click to Open Settings Window
 local CheckAll = TEXT("CRAFTQUEUE_ALL")
 local Gold = TEXT("SYS_MONEY_TYPE_0")
-local Donate50000gold = TEXT("SC_424962_C")
-local Donate50000gold = string.gsub(Donate50000gold,"%W","")--Donate 50,000 gold.
-local Donate50000gold = string.gsub(Donate50000gold,"%d+"," ")--Donate 50,000 gold.
-local Donategold = string.gsub(Donate50000gold, "  "," ")
+-- Use the standard money label for the donate-gold button so localization is consistent
+local Donategold = "Donate Gold"
 local ContributionAmount = TEXT("GUILD_RESOURCE_TOTAL")
 local Value = TEXT("PET_ATTR_VALUE")
 

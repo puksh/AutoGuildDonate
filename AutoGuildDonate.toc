@@ -1,6 +1,6 @@
 ## Title: AutoGuildDonate
-## Version 3.4
-## Author: ZTrek
+## Version 4.0
+## Author: ZTrek - edited by puksh
 
 AutoGuildDonate.xml
 AutoGuildDonate_Register.lua

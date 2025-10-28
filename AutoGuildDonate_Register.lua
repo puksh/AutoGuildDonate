@@ -17,7 +17,7 @@ if type(AddonManager) == "table" and type(AddonManager.RegisterAddonTable) == "f
         local addon = {
             name = "AutoGuildDonate",
             version = "v5.0",
-            author = "ZTrek",
+            author = "ZTrek - edited by puksh",
             description = "Automatically donate selected resources and gold to the guild.",
             category = "Economy",
             -- Icons

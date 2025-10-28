@@ -501,9 +501,18 @@
 						<Offset><AbsDimension x="325" y="280"/></Offset>
 					</Anchor>
 				</Anchors>
+				<Scripts>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_LEFT", 4, 0)
+						GameTooltip:SetText("Auto Donate", 1, 1, 0)
+						GameTooltip:AddLine("When checked, automatically donate a percentage of earned gold.", 1, 1, 1)
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>GameTooltip:Hide()</OnLeave>
+				</Scripts>
 			</CheckButton>
 		<Button name="DonateGoldButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Donate Gold">
-			<Size><AbsDimension x="75" y="20"/></Size>
+			<Size><AbsDimension x="113" y="20"/></Size>
 				<Anchors>
 					<Anchor point="RIGHT" relativeTo="DonateGoldCheckButton" relativePoint="LEFT">
 						<Offset><AbsDimension x="1" y="0"/></Offset>
@@ -513,6 +522,13 @@
 					<OnClick>
 						AutoGoldDonate()
 					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT", 4, 0)
+						GameTooltip:SetText("Donate Gold", 1, 1, 0)
+						GameTooltip:AddLine("Click to immediately donate the configured percentage of your gold to the guild.", 1, 1, 1)
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>GameTooltip:Hide()</OnLeave>
 			</Scripts>
 		</Button>
 			<Slider name="GoldPercSlider" orientation="HORIZONTAL">
