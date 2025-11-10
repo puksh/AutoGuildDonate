@@ -157,7 +157,7 @@ function AGDConfig()
 		getglobal("DonateGoldButton"):SetText(Donategold)
 		ContributionAmountText:SetText(ContributionAmount)
 		AGDResources["GoldPerc"] = AGDResources["GoldPerc"] or 1
-		AutoGuildDonateTitle:SetText(ADDON)
+		AutoGuildDonateTitle:SetText(ADDON.." v"..VERSION)
 		AutoGuildDonatePopulateCheckBoxes()
 		WoodButtons:Hide()
 		OreButtons:Hide()
