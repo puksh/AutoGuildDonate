@@ -311,5 +311,10 @@ AGDCheckboxIDs = {
 ["201757"] = true, -- YewTimber
 ["201767"] = true, -- YewLumber
 ["201779"] = true, -- YewPlank
---["DonateGoldCheckButton"
+["1250540"] = true, -- AtlasCore
+["1250539"] = true, -- AtlasEssence
+["1244118"] = true, -- AtlasFernleaf
+["1244117"] = true, -- AtlasFairywood
+["1250538"] = true, -- AtlasRuby
+["1244116"] = true, -- AtlasZinc
 }
