@@ -162,7 +162,10 @@ function AGDConfig()
 		WoodButtons:Hide()
 		OreButtons:Hide()
 		HerbButtons:Hide()
-		GuildButtons:Show()
+		GuildButtons:Show() -- default first tab
+		if type(AGDSelectTab) == "function" then
+			AGDSelectTab("ShowGuildButtons") -- initialize tab active state visuals by name
+		end
 		ToggleUIFrame(AutoGuildDonateConfigFrame)
 	else
 		AGD_Config:Hide()
@@ -252,3 +255,41 @@ function SelectAllButtonOnEnter(this)
 	GameTooltip:AddLine("Click to toggle all resource checkboxes on or off", 1, 1, 1)
 	GameTooltip:Show()
 end
+
+local AGDCurrentTab = nil
+
+local AGD_TAB_CONTENT = {
+	ShowGuildButtons = "GuildButtons",
+	ShowHerbButtons  = "HerbButtons",
+	ShowOreButtons   = "OreButtons",
+	ShowWoodButtons  = "WoodButtons",
+}
+
+function AGDSelectTab(tab)
+	local tabBtn = tab
+	if type(tab) == "string" then tabBtn = _G[tab] end
+	if not tabBtn or type(tabBtn.GetName) ~= "function" then return end
+	local name = tabBtn:GetName()
+	if AGDCurrentTab == tabBtn then return end -- already active
+
+	local skillTabSetter = type(rawget(_G, "SkillTab_SetActiveState")) == "function" and rawget(_G, "SkillTab_SetActiveState") or nil
+	for tabName, _ in pairs(AGD_TAB_CONTENT) do
+		local btn = _G[tabName]
+		if btn and skillTabSetter then
+			skillTabSetter(btn, btn == tabBtn)
+		end
+	end
+	AGDCurrentTab = tabBtn
+
+	for tabName, frameName in pairs(AGD_TAB_CONTENT) do
+		local frame = _G[frameName]
+		if frame then
+			if tabName == name then
+				frame:Show()
+			else
+				frame:Hide()
+			end
+		end
+	end
+end
+

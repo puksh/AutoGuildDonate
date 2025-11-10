@@ -6,6 +6,7 @@ v5.2:
 - style: Reordered Guild Tab items by their appropriate type donated
 - refactor: Changed Toggle checkbox into a button
 - fix: Toggle checkbox doesn't invert checkboxes - now it toggles all checkboxes off or on
+- fix: tabs now correctly show when they are selectable/active
 - style: increased addon window slightly
 - style: add version to the window title
 

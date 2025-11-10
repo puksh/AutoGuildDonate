@@ -119,9 +119,7 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-				<OnClick>
-					GuildButtons:Show()
-				</OnClick>
+				<OnClick>AGDSelectTab(this)</OnClick>
 			</Scripts>
 		</Button>
 		<Button name="ShowHerbButtons" inherits="UIPanelTopTabTemplate" id="2" text="Herbs">
@@ -131,9 +129,7 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-					<OnClick>
-						HerbButtons:Show()
-					</OnClick>
+					<OnClick>AGDSelectTab(this)</OnClick>
 				</Scripts>
 		</Button>			
 		<Button name="ShowOreButtons" inherits="UIPanelTopTabTemplate" id="3" text="Ores">
@@ -143,9 +139,7 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-				<OnClick>
-					OreButtons:Show()
-				</OnClick>
+				<OnClick>AGDSelectTab(this)</OnClick>
 			</Scripts>
 		</Button>
 		<Button name="ShowWoodButtons" inherits="UIPanelTopTabTemplate" id="4" text="Wood">
@@ -155,9 +149,7 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-				<OnClick>
-					WoodButtons:Show()
-				</OnClick>
+				<OnClick>AGDSelectTab(this)</OnClick>
 			</Scripts>
 		</Button>
 	<Frame name="NumbersLeft">
