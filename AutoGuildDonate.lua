@@ -60,6 +60,12 @@ AGDGuildResources = {
 ["207324"] = true, -- MoonlightPearl1000
 ["207320"] = true, -- DarkNightPearl
 ["207322"] = true, -- ExquisiteWoodenChest
+["1250540"] = true, -- AtlasCore
+["1250539"] = true, -- AtlasEssence
+["1244118"] = true, -- AtlasFernleaf
+["1244117"] = true, -- AtlasFairywood
+["1250538"] = true, -- AtlasRuby
+["1244116"] = true, -- AtlasZinc
 }
 
 function AutoGuildDonate_OnLoad(this)
