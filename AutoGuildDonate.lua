@@ -156,6 +156,9 @@ function AGDConfig()
 		AutoGuildDonateLoad:Hide()
 		getglobal("DonateGoldButton"):SetText(Donategold)
 		ContributionAmountText:SetText(ContributionAmount)
+		if _G and _G["ContributionAmountTextRight"] and type(_G["ContributionAmountTextRight"].SetText) == "function" then
+			_G["ContributionAmountTextRight"]:SetText(ContributionAmount)
+		end
 		AGDResources["GoldPerc"] = AGDResources["GoldPerc"] or 1
 		AutoGuildDonateTitle:SetText(ADDON.." v"..VERSION)
 		AutoGuildDonatePopulateCheckBoxes()

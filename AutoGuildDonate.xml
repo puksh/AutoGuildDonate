@@ -1,10 +1,10 @@
 <Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/UI.xsd">
 	<Script file="AutoGuildDonate.lua"/>
 
-<Button name="NumbersWhiteTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="37" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="1" g="1" b="1"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-17" y="-4"/></Offset></Anchor></Anchors></NormalText><NormalTexture file="interface\flags\border"/></Button>
-<Button name="NumbersGreenTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="37" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="0" g="1" b="0"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-18" y="-4"/></Offset></Anchor></Anchors></NormalText><NormalTexture file="interface\flags\border"/></Button>
-<Button name="NumbersBlueTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="45" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="0" g="0" b="1"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-18" y="-4"/></Offset></Anchor></Anchors></NormalText><NormalTexture file="interface\flags\border"/></Button>
-<Button name="NumbersPurpleTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="45" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="0.5" g="0" b="1"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-18" y="-4"/></Offset></Anchor></Anchors></NormalText><NormalTexture file="interface\flags\border"/></Button>
+<Button name="NumbersWhiteTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="37" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="1" g="1" b="1"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-17" y="-4"/></Offset></Anchor></Anchors></NormalText></Button>
+<Button name="NumbersGreenTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="37" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="0" g="1" b="0"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-18" y="-4"/></Offset></Anchor></Anchors></NormalText></Button>
+<Button name="NumbersBlueTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="45" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="0" g="0" b="1"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-18" y="-4"/></Offset></Anchor></Anchors></NormalText></Button>
+<Button name="NumbersPurpleTextButtonTemplate" inherits="UIPanelButtonScriptTemplate" virtual="true"><Size><AbsDimension x="45" y="26"/></Size><NormalText inherits="GameTitleFont"><Color r="0.5" g="0" b="1"></Color><Size><AbsDimension x="0" y="14"/></Size><Anchors><Anchor point="RIGHT"><Offset><AbsDimension x="-18" y="-4"/></Offset></Anchor></Anchors></NormalText></Button>
 
 <FontString name="CommGrey" inherits="MasterFont" font="Fonts\DFHEIMDU.TTF" weight="BOLD" virtual="true"><FontHeight><AbsValue val="14"/></FontHeight>
 	<Color r="0.66" g="0.66" b="0.66"></Color>
@@ -110,11 +110,31 @@
 			</Layer>
 		</Layers>
 	<Frames>
+		<!-- Inner content backdrop frame to mimic LuaExplorer Utilities/AddonManager style -->
+		<Frame name="AutoGuildDonateConfigFrame_Content" inherits="UIPanelBackdropFrame">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="10" y="52"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-10" y="-12"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					UIPanelBackdropFrame_SetTexture(this, "Interface/Common/PanelCommonBorder", 64, 64);
+				</OnLoad>
+			</Scripts>
+		</Frame>
 		<Button name="ShowGuildButtons" inherits="UIPanelTopTabTemplate" id="1" text="Guild">
 			<Anchors>
 				<Anchor point="TOPLEFT">
 					<Offset>
-						<AbsDimension x="205" y="30"/>
+						<AbsDimension x="16" y="29"/>
 					</Offset>
 				</Anchor>
 			</Anchors>
@@ -157,23 +177,12 @@
 			<AbsDimension x="332" y="290"/>
 		</Size>
 		<Anchors>
-			<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame" relativePoint="TOPLEFT">
-				<Offset>
-					<AbsDimension x="3" y="60"/>
-				</Offset>
-			</Anchor>
+				<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame_Content" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="3" y="12"/>
+					</Offset>
+				</Anchor>
 		</Anchors>
-		<Backdrop edgeFile="Interface\Tooltips\Tooltip-border" bgFile="Interface/mailframe/mailpaper-gift.tga">
-			<BackgroundInsets>
-				<AbsInset top="1" left="1" bottom="1" right="1"/>
-			</BackgroundInsets>
-			<EdgeSize>
-				<AbsValue val="16"/>
-			</EdgeSize>
-			<TileSize>
-				<AbsValue val="16"/>
-			</TileSize>
-		</Backdrop>
 <Frames>
 <Button name="WhtComm001" inherits="NumbersWhiteTextButtonTemplate" enableMouse="false" text="1"><Anchors><Anchor point="TOPLEFT" relativeTo="NumbersLeft" relativePoint="TOPLEFT"><Offset><AbsDimension x="163" y="54"/></Offset></Anchor></Anchors></Button>
 <Button name="GrnComm001" inherits="NumbersGreenTextButtonTemplate" enableMouse="false" text="3"><Anchors><Anchor point="RIGHT" relativeTo="WhtComm001" relativePoint="RIGHT"><Offset><AbsDimension x="38" y="0"/></Offset></Anchor></Anchors></Button>
@@ -245,7 +254,7 @@
 				</Anchors>
 				<Color r="0.88" g="0.66" b="0.33"></Color>
 			</FontString>
-<FontString name="Comm001" inherits="CommGrey" text="1"><Anchors><Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame" relativePoint="TOPLEFT"><Offset><AbsDimension x="15" y="116"/></Offset></Anchor></Anchors></FontString>
+<FontString name="Comm001" inherits="CommGrey" text="1"><Anchors><Anchor point="TOPLEFT" relativeTo="NumbersLeft" relativePoint="TOPLEFT"><Offset><AbsDimension x="12" y="56"/></Offset></Anchor></Anchors></FontString>
 <FontString name="Rare001" inherits="RareGrey" text="1"><Anchors><Anchor point="TOPRIGHT" relativeTo="Comm001" relativePoint="BOTTOMRIGHT"><Offset><AbsDimension x="0" y="8"/></Offset></Anchor></Anchors></FontString>
 <FontString name="Comm008" inherits="CommGrey" text="8"><Anchors><Anchor point="TOPRIGHT" relativeTo="Rare001" relativePoint="BOTTOMRIGHT"><Offset><AbsDimension x="0" y="8"/></Offset></Anchor></Anchors></FontString>
 <FontString name="Rare011" inherits="RareGrey" text="11"><Anchors><Anchor point="TOPRIGHT" relativeTo="Comm008" relativePoint="BOTTOMRIGHT"><Offset><AbsDimension x="0" y="8"/></Offset></Anchor></Anchors></FontString>
@@ -271,17 +280,6 @@
 				</Offset>
 			</Anchor>
 		</Anchors>
-		<Backdrop edgeFile="Interface\Tooltips\Tooltip-border" bgFile="Interface/mailframe/mailpaper-gift.tga">
-			<BackgroundInsets>
-				<AbsInset top="1" left="1" bottom="1" right="1"/>
-			</BackgroundInsets>
-			<EdgeSize>
-				<AbsValue val="16"/>
-			</EdgeSize>
-			<TileSize>
-				<AbsValue val="1"/>
-			</TileSize>
-		</Backdrop>
 <Frames>
 
 <Button name="WhtComm044" inherits="NumbersWhiteTextButtonTemplate" enableMouse="false" text="8"><Anchors><Anchor point="TOPLEFT" relativeTo="NumbersRight" relativePoint="TOPLEFT"><Offset><AbsDimension x="163" y="54"/></Offset></Anchor></Anchors></Button>
@@ -348,7 +346,7 @@
 </Frames>
 				<Layers>
 					<Layer>
-						<FontString name="ContributionAmountText" inherits="GameTitleFont" text="Contribution Amount">
+						<FontString name="ContributionAmountTextRight" inherits="GameTitleFont" text="Contribution Amount">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativeTo="NumbersRight" relativePoint="TOPLEFT">
 									<Offset><AbsDimension x="190" y="40"/></Offset>
@@ -377,23 +375,12 @@
 			<AbsDimension x="670" y="376"/>
 				</Size>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame" relativePoint="TOPLEFT">
+					<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame_Content" relativePoint="TOPLEFT">
 						<Offset>
-							<AbsDimension x="3" y="60"/>
+							<AbsDimension x="3" y="12"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
-		<Backdrop edgeFile="Interface\Tooltips\Tooltip-border" bgFile="Interface/AddOns/AutoGuildDonate/buttons/AGDBG2.tga">
-			<BackgroundInsets>
-				<AbsInset top="10" left="10" bottom="10" right="10"/>
-			</BackgroundInsets>
-			<EdgeSize>
-				<AbsValue val="16"/>
-			</EdgeSize>
-			<TileSize>
-				<AbsValue val="1"/>
-			</TileSize>
-		</Backdrop>
 				<Scripts>
 				<OnShow>
 					HerbButtons:Hide()
@@ -404,7 +391,7 @@
 				</OnShow>
 				</Scripts>
 				<Frames>
-<Button name="GuildRuneButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Guild Rune"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="GuildButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="25" y="20"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="202916" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="GuildRuneButton" relativePoint="RIGHT"><Offset><AbsDimension x="-1"/></Offset></Anchor></Anchors></CheckButton>
+<Button name="GuildRuneButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Guild Rune"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="GuildButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="25" y="8"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="202916" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="GuildRuneButton" relativePoint="RIGHT"><Offset><AbsDimension x="-1"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="DreadEssenceButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Dread Essence"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="GuildRuneButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="207325" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="DreadEssenceButton" relativePoint="RIGHT"><Offset><AbsDimension x="-1"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="NightmareEssenceButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Nightmare Essence"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="DreadEssenceButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="207326" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="NightmareEssenceButton" relativePoint="RIGHT"><Offset><AbsDimension x="-1"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="OriginalSinEssenceButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Original Sin Essence"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="NightmareEssenceButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="207328" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="OriginalSinEssenceButton" relativePoint="RIGHT"><Offset><AbsDimension x="-1"/></Offset></Anchor></Anchors></CheckButton>
@@ -475,7 +462,7 @@
 		</Layers>
 			<Anchors>
 				<Anchor point="BOTTOMLEFT" relativeTo="GuildButtons" relativePoint="BOTTOMLEFT">
-					<Offset><AbsDimension x="28" y="-6"/></Offset>
+					<Offset><AbsDimension x="28" y="-10"/></Offset>
 				</Anchor>
 			</Anchors>
 			<Scripts>
@@ -491,7 +478,7 @@
 				<Size><AbsDimension x="20" y="20"/></Size>
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="GuildButtons" relativePoint="TOPLEFT">
-						<Offset><AbsDimension x="325" y="350"/></Offset>
+						<Offset><AbsDimension x="325" y="346"/></Offset>
 					</Anchor>
 				</Anchors>
 				<Scripts>
@@ -575,16 +562,16 @@
 			<AbsDimension x="670" y="376"/>
 				</Size>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame" relativePoint="TOPLEFT">
+					<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame_Content" relativePoint="TOPLEFT">
 						<Offset>
-							<AbsDimension x="3" y="60"/>
+							<AbsDimension x="3" y="40"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 <Frames>
 <Button name="HerbLevelButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="HerbLevel"><Size><AbsDimension x="32" y="32"/></Size><Anchors><Anchor point="BOTTOMLEFT" relativeTo="HerbButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="20" y="0"/></Offset></Anchor></Anchors><NormalTexture file="interface/icons/item_her_035"/></Button>
 
-<Button name="MountainDemonGrassButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Mountain Demon Grass"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="HerbButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="21" y="53"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200335" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="MountainDemonGrassButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201785" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200335" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201799" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201785" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="200335" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201799" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
+<Button name="MountainDemonGrassButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Mountain Demon Grass"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="HerbButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="21" y="25"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200335" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="MountainDemonGrassButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201785" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200335" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201799" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201785" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="200335" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201799" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="RosemaryButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Rosemary"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="MountainDemonGrassButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="202552" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="RosemaryButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202631" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202552" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202638" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202631" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="202645" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202638" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton>
 <Button name="BeetrootButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Beetroot"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="RosemaryButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200334" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="BeetrootButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201786" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200334" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201800" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201786" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201814" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201800" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="BisonGrassButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Bison Grass"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="BeetrootButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="202553" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="BisonGrassButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202632" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202553" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202639" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202632" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="202646" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202639" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton>
@@ -625,9 +612,9 @@
 			<AbsDimension x="670" y="376"/>
 		</Size>
 		<Anchors>
-			<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame" relativePoint="TOPLEFT">
+			<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame_Content" relativePoint="TOPLEFT">
 				<Offset>
-					<AbsDimension x="3" y="60"/>
+					<AbsDimension x="3" y="40"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -642,9 +629,9 @@
 			</OnShow>
 		</Scripts>
 <Frames>
-<Button name="MineLevelButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="MineLevel"><Size><AbsDimension x="32" y="32"/></Size><Anchors><Anchor point="BOTTOMLEFT" relativeTo="HerbButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="20" y="0"/></Offset></Anchor></Anchors><NormalTexture file="interface/icons/item_ore_022"/></Button>
+<Button name="MineLevelButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="MineLevel"><Size><AbsDimension x="32" y="32"/></Size><Anchors><Anchor point="BOTTOMLEFT" relativeTo="OreButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="20" y="0"/></Offset></Anchor></Anchors><NormalTexture file="interface/icons/item_ore_022"/></Button>
 
-<Button name="ZincOreButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Zinc Ore"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="OreButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="21" y="53"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200230" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="ZincOreButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201710" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200230" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201723" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201710" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201736" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201723" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
+<Button name="ZincOreButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Zinc Ore"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="OreButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="21" y="25"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200230" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="ZincOreButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201710" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200230" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201723" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201710" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201736" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201723" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="FlameDustButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Flame Dust"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="ZincOreButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200507" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="FlameDustButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202561" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200507" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202568" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202561" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="202575" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202568" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton>
 <Button name="TinOreButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Tin Ore"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="FlameDustButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200232" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="TinOreButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201711" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200232" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201724" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201711" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201737" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201724" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="CyanideButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Cyanide"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="TinOreButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200506" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="CyanideButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202562" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200506" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202569" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202562" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="202576" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202569" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton>
@@ -675,9 +662,9 @@
 			<AbsDimension x="670" y="376"/>
 				</Size>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame" relativePoint="TOPLEFT">
+					<Anchor point="TOPLEFT" relativeTo="AutoGuildDonateConfigFrame_Content" relativePoint="TOPLEFT">
 						<Offset>
-							<AbsDimension x="3" y="60"/>
+							<AbsDimension x="3" y="40"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -692,9 +679,9 @@
 				</OnShow>
 				</Scripts>
 <Frames>
-<Button name="WoodLevelButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="WoodLevel"><Size><AbsDimension x="32" y="32"/></Size><Anchors><Anchor point="BOTTOMLEFT" relativeTo="HerbButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="20" y="0"/></Offset></Anchor></Anchors><NormalTexture file="interface/icons/item_lum_029"/></Button>
+<Button name="WoodLevelButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="WoodLevel"><Size><AbsDimension x="32" y="32"/></Size><Anchors><Anchor point="BOTTOMLEFT" relativeTo="WoodButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="20" y="0"/></Offset></Anchor></Anchors><NormalTexture file="interface/icons/item_lum_029"/></Button>
 
-<Button name="AshWoodButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Ash Wood"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="WoodButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="21" y="53"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200293" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="AshWoodButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201749" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200293" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201761" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201749" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201773" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201761" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
+<Button name="AshWoodButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Ash Wood"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="WoodButtons" relativePoint="TOPLEFT"><Offset><AbsDimension x="21" y="25"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200293" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="AshWoodButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201749" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200293" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201761" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201749" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201773" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201761" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="ChimeWoodButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Chime Wood"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="AshWoodButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200508" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="ChimeWoodButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202596" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200508" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202603" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202596" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="202610" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202603" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton>
 <Button name="WillowWoodButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Willow Wood"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="ChimeWoodButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200295" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="WillowWoodButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201750" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200295" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="201762" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201750" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="201774" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="201762" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors></CheckButton>
 <Button name="StoneRotanWoodButton" inherits="UIPanelButtonTemplate" enableMouse="false" text="Stone Rotan Wood"><Size><AbsDimension x="150" y="20"/></Size><Anchors><Anchor point="TOPLEFT" relativeTo="WillowWoodButton" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2"/></Offset></Anchor></Anchors><NormalTexture file="Interface\Common\Bar\round2.tga"/></Button><CheckButton name="200509" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="StoneRotanWoodButton" relativePoint="RIGHT"><Offset><AbsDimension x="11"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202597" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="200509" relativePoint="RIGHT"><Offset><AbsDimension x="18"/></Offset></Anchor></Anchors></CheckButton><CheckButton name="202604" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202597" relativePoint="RIGHT"><Offset><AbsDimension x="24"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton><CheckButton name="202611" inherits="UIPanelCheckButtonTemplate"><Size><AbsDimension x="20" y="20"/></Size><Anchors><Anchor point="LEFT" relativeTo="202604" relativePoint="RIGHT"><Offset><AbsDimension x="26"/></Offset></Anchor></Anchors><Scripts><OnShow>this:LockHighlight()</OnShow></Scripts></CheckButton>

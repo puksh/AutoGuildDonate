@@ -9,8 +9,8 @@ v5.2:
 - fix: tabs now correctly show when they are selectable/active
 - style: increased addon window slightly
 - style: add version to the window title
-
-v5.1:
+- style: unified tab backgrounds and made them more in style
+  v5.1:
 
 - Registered with AddonManager
 - Addon can be enabled/disabled from AddonManager
