@@ -1,6 +1,15 @@
 Original Addon by ZTrek - based on Auto Guild Donate v5.0
 
-AutoGuildDonate — changes from 5.0
+v5.2:
+
+- feat: Added Atlas guild donation items
+- style: Reordered Guild Tab items by their appropriate type donated
+- refactor: Changed Toggle checkbox into a button
+- fix: Toggle checkbox doesn't invert checkboxes - now it toggles all checkboxes off or on
+- style: increased addon window slightly
+- style: add version to the window title
+
+v5.1:
 
 - Registered with AddonManager
 - Addon can be enabled/disabled from AddonManager

@@ -9,7 +9,7 @@ local _lang = tostring(GetLanguage() or "")
 local ENLang = (string.sub(_lang,1,2):upper() == "EN") and true or false
 local ADDON = ENLang and "Auto Guild Donate" or Auto.." "..GuildContribution
 
-local VERSION = 5.1
+local VERSION = 5.2
 local Author = TEXT("GUILD_MSG_POST_AUTHOR")
 local CREATOR = Author..": ZTrek - edited by puksh"
 
@@ -21,10 +21,8 @@ local EndColor = "|r"
 
 local AutoGuildDonateLoaded = true
 local AGDDelay = 1
---[[
-]]
+
 local LeftClickOpenSettings = TEXT("CHANNEL_CHANGE_LEFT_MOUSE_OPEN")--Left-Click to Open Settings Window
-local CheckAll = TEXT("CRAFTQUEUE_ALL")
 local Gold = TEXT("SYS_MONEY_TYPE_0")
 -- Use the standard money label for the donate-gold button so localization is consistent
 local Donategold = "Donate Gold"
@@ -34,6 +32,8 @@ local Value = TEXT("PET_ATTR_VALUE")
 local Herbs = TEXT("AC_ITEMTYPENAME_3_2")
 local Ores = TEXT("AC_ITEMTYPENAME_3_0")
 local Wood = TEXT("AC_ITEMTYPENAME_3_1")
+
+local SelectAllState = false
 
 AGDGuildResources = {
 ["207329"] = true, -- DauntlessCore
@@ -155,7 +155,6 @@ function AGDConfig()
 		end
 		AutoGuildDonateLoad:Hide()
 		getglobal("DonateGoldButton"):SetText(Donategold)
-		ChkAllOnOff:SetText(CheckAll)
 		ContributionAmountText:SetText(ContributionAmount)
 		AGDResources["GoldPerc"] = AGDResources["GoldPerc"] or 1
 		AutoGuildDonateTitle:SetText(ADDON)
@@ -211,16 +210,45 @@ function AutoGuildDonatePopulateCheckBoxes()
 	DonateGoldCheckButton:SetChecked(AGDResources["DonateGoldCheckButton"])
 end
 
-function ToggleDefaultCheckboxes()
-	for GuildResourceID, _ in pairs(AGDGuildResources) do
-		if getglobal(GuildResourceID) ~= nil then
-			getglobal(GuildResourceID):SetChecked(not getglobal(GuildResourceID):IsChecked())
+function ToggleAllCheckboxes()
+	if type(AGDCheckboxIDs) ~= "table" then
+		return
+	end
+	
+	-- Check current state: count how many checkboxes are checked vs total
+	local checkedCount = 0
+	local totalCount = 0
+	
+	for ResourceID, _ in pairs(AGDCheckboxIDs) do
+		local checkbox = getglobal(ResourceID)
+		if checkbox ~= nil then
+			totalCount = totalCount + 1
+			if checkbox:IsChecked() then
+				checkedCount = checkedCount + 1
+			end
 		end
 	end
+	
+	-- If more than half are checked, uncheck all. Otherwise, check all.
+	local shouldCheckAll = (checkedCount < totalCount / 2)
+	
+	for ResourceID, _ in pairs(AGDCheckboxIDs) do
+		local checkbox = getglobal(ResourceID)
+		if checkbox ~= nil then
+			checkbox:SetChecked(shouldCheckAll)
+		end
+	end
+	
+	SelectAllState = shouldCheckAll
 end
 
-function ToggleDefaultsCheckButtonOnEnter(this)
-	GameTooltip:SetOwner(this, "ANCHOR_LEFT", 4, 0)
-	GameTooltip:SetText(CheckAll, 1, 1, 1)
+function SelectAllButtonOnEnter(this)
+	if type(GameTooltip) ~= "table" or type(GameTooltip.SetOwner) ~= "function" then
+		return
+	end
+	
+	GameTooltip:SetOwner(this, "ANCHOR_RIGHT", 4, 0)
+	GameTooltip:SetText("Select/Deselect All", 1, 1, 0)
+	GameTooltip:AddLine("Click to toggle all resource checkboxes on or off", 1, 1, 1)
 	GameTooltip:Show()
 end
