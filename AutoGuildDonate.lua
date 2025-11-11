@@ -221,11 +221,11 @@ function ToggleAllCheckboxes()
 		return
 	end
 	
-	-- Check current state: count how many checkboxes are checked vs total
+	-- Check current state: count how many guild checkboxes are checked vs total
 	local checkedCount = 0
 	local totalCount = 0
 	
-	for ResourceID, _ in pairs(AGDCheckboxIDs) do
+	for ResourceID, _ in pairs(AGDGuildResources) do
 		local checkbox = getglobal(ResourceID)
 		if checkbox ~= nil then
 			totalCount = totalCount + 1
@@ -238,7 +238,7 @@ function ToggleAllCheckboxes()
 	-- If more than half are checked, uncheck all. Otherwise, check all.
 	local shouldCheckAll = (checkedCount < totalCount / 2)
 	
-	for ResourceID, _ in pairs(AGDCheckboxIDs) do
+	for ResourceID, _ in pairs(AGDGuildResources) do
 		local checkbox = getglobal(ResourceID)
 		if checkbox ~= nil then
 			checkbox:SetChecked(shouldCheckAll)
@@ -255,7 +255,7 @@ function SelectAllButtonOnEnter(this)
 	
 	GameTooltip:SetOwner(this, "ANCHOR_RIGHT", 4, 0)
 	GameTooltip:SetText("Select/Deselect All", 1, 1, 0)
-	GameTooltip:AddLine("Click to toggle all resource checkboxes on or off", 1, 1, 1)
+	GameTooltip:AddLine("Click to toggle all guild resource checkboxes on or off", 1, 1, 1)
 	GameTooltip:Show()
 end
 
