@@ -259,6 +259,63 @@ function SelectAllButtonOnEnter(this)
 	GameTooltip:Show()
 end
 
+function HerbLevelButtonOnEnter(this)
+	if type(GameTooltip) ~= "table" or type(GameTooltip.SetOwner) ~= "function" then
+		return
+	end
+	
+	local herbLevel = math.floor(GetPlayerCurrentSkillValue("HERBLISM") or 0)
+	GameTooltip:SetOwner(this, "ANCHOR_RIGHT", 4, 0)
+	GameTooltip:SetText("Herbalism "..TEXT("SYS_LEVEL")..": "..herbLevel, 0.36, 0.54, 0.17)
+	GameTooltip:AddSeparator()
+	GameTooltip:AddLine("Contribution Amount Guide:", 1, 1, 0)
+	GameTooltip:AddLine(WhiteText.."White: Basic contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(GreenText.."Green: Enhanced contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(BlueText.."Blue: Superior contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(PurpleText.."Purple: Maximum contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddSeparator()
+	GameTooltip:AddLine("Higher level materials give more guild contribution.", 0.8, 0.8, 0.8)
+	GameTooltip:Show()
+end
+
+function MineLevelButtonOnEnter(this)
+	if type(GameTooltip) ~= "table" or type(GameTooltip.SetOwner) ~= "function" then
+		return
+	end
+	
+	local miningLevel = math.floor(GetPlayerCurrentSkillValue("MINING") or 0)
+	GameTooltip:SetOwner(this, "ANCHOR_RIGHT", 4, 0)
+	GameTooltip:SetText("Mining "..TEXT("SYS_LEVEL")..": "..miningLevel, 0.44, 0.47, 0.59)
+	GameTooltip:AddSeparator()
+	GameTooltip:AddLine("Contribution Amount Guide:", 1, 1, 0)
+	GameTooltip:AddLine(WhiteText.."White: Basic contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(GreenText.."Green: Enhanced contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(BlueText.."Blue: Superior contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(PurpleText.."Purple: Maximum contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddSeparator()
+	GameTooltip:AddLine("Higher level materials give more guild contribution.", 0.8, 0.8, 0.8)
+	GameTooltip:Show()
+end
+
+function WoodLevelButtonOnEnter(this)
+	if type(GameTooltip) ~= "table" or type(GameTooltip.SetOwner) ~= "function" then
+		return
+	end
+	
+	local lumberingLevel = math.floor(GetPlayerCurrentSkillValue("LUMBERING") or 0)
+	GameTooltip:SetOwner(this, "ANCHOR_RIGHT", 4, 0)
+	GameTooltip:SetText("Woodcutting "..TEXT("SYS_LEVEL")..": "..lumberingLevel, 0.61, 0.40, 0.17)
+	GameTooltip:AddSeparator()
+	GameTooltip:AddLine("Contribution Amount Guide:", 1, 1, 0)
+	GameTooltip:AddLine(WhiteText.."White: Basic contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(GreenText.."Green: Enhanced contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(BlueText.."Blue: Superior contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddLine(PurpleText.."Purple: Maximum contribution"..EndColor, 1, 1, 1)
+	GameTooltip:AddSeparator()
+	GameTooltip:AddLine("Higher level materials give more guild contribution.", 0.8, 0.8, 0.8)
+	GameTooltip:Show()
+end
+
 local AGDCurrentTab = nil
 
 local AGD_TAB_CONTENT = {
