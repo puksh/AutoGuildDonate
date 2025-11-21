@@ -91,6 +91,7 @@ function AutoGuildDonate_OnEvent(this, event, arg1, arg2, arg3, arg4)
 	end
 	if event == "PLAYER_MONEY" and IsInGuild() then
 		CurrGold = GetPlayerMoney("copper")
+		PrevGold = PrevGold or CurrGold
 		if CurrGold > PrevGold then
 			GoldMade = CurrGold - PrevGold
 			PrevGold = CurrGold
