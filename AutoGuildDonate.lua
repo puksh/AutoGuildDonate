@@ -9,7 +9,7 @@ local _lang = tostring(GetLanguage() or "")
 local ENLang = (string.sub(_lang,1,2):upper() == "EN") and true or false
 local ADDON = ENLang and "Auto Guild Donate" or Auto.." "..GuildContribution
 
-local VERSION = 5.2
+local VERSION = 5.3
 local Author = TEXT("GUILD_MSG_POST_AUTHOR")
 local CREATOR = Author..": ZTrek - edited by puksh"
 

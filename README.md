@@ -1,5 +1,9 @@
 Original Addon by ZTrek - based on Auto Guild Donate v5.0
 
+v5.3:
+
+- fix an error with spent gold
+
 v5.2:
 
 - feat: Added Atlas guild donation items
