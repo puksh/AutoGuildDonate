@@ -1,5 +1,9 @@
 Original Addon by ZTrek - based on Auto Guild Donate v5.0
 
+v5.4:
+
+- feat: add guild materials that give 500
+
 v5.3:
 
 - fix an error with spent gold
